@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Timer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+    <style>
+        html,
+        body,
+        .container-bg {
+            height: max-content;
+            /* background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%); */
+            background: linear-gradient(90deg, #16BFFD 0%, #CB3066 100%);
+        }
+
+        .container {
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+            width: 50%;
+            position: relative;
+            background: #333;
+            border-radius: 10% / 15%;
+            color: white;
+            text-align: center;
+
+        }
+
+
+
+        .empty {
+            margin-top: 200px;
+        }
+
+        .timer {
+            margin-top: 30px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .btn.btn-outline-secondary:hover {
+            background-color: #be3a70;
+            color: rgb(255, 255, 255);
+            border-color: #be3a70;
+            ;
+        }
+
+        .btn.btn-outline-secondary {
+            border-color: white;
+            color: white;
+        }
+
+        .input-group {
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .input-group .form-control {
+            text-align: center;
+
+        }
+
+        .form-select {
+            cursor: pointer;
+            /* max-height: 20px; */
+        }
+
+        #timer-minutes,
+        #timer-seconds {
+            font-size: 72px;
+            color: red;
+
+        }
+
+        #border {
+            background-color: white;
+            width: 60%;
+            border-radius: 3% / 10%;
+        }
+
+        .col-md-auto {
+            font-size: 60px;
+        }
+    </style>
+    <script>
+
+        let timer = null;
+        var seconds, minutes;
+        var pause = false;
+
+        function startTimer() {
+            if ((timer == null) && (pause == false)) {
+                seconds = 0;
+                minutes = 0;
+            } else {
+                pause = false;
+            }
+
+            document.getElementById("start").disabled = true;
+            document.getElementById("resume").disabled = true;
+            document.getElementById("stop").removeAttribute("disabled");
+            timer = setInterval(function () {
+                if (seconds == 59) {
+                    seconds = 0;
+                    minutes += 1;
+                } else {
+                    seconds += 1;
+                }
+                document.getElementById("timer-seconds").innerHTML = (seconds < 10) ? "0" + seconds : seconds;
+                document.getElementById("timer-minutes").innerHTML = (minutes < 10) ? "0" + minutes : minutes;
+            }, 1000);
+
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+            timer = null;
+            document.getElementById("start").innerHTML = "Restart";
+            document.getElementById("stop").disabled = true;
+            document.getElementById("resume").removeAttribute("disabled");
+            document.getElementById("start").removeAttribute("disabled");
+
+        }
+
+
+        function resumeTimer() {
+            // alert(seconds);
+            pause = true;
+            startTimer();
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="container-bg">
+        <div class="empty"></div>
+        <div class="container">
+            <div class="timer">
+                <div class="row justify-content-md-center">
+                    <h3 class="text-center" style="color:azure; font-size: 35px; margin-top: 30px;">Set Your Timer</h3>
+                    <br><br><br><br>
+                    <div class="row justify-content-md-center" id="border">
+                        <ul class="list-inline text-center" style="font-family: 'Anton', sans-serif;">
+                            <li class="list-inline-item" id="timer-minutes">00</li>
+                            <li class="list-inline-item" style="font-size: 40px; color: red;">:</li>
+                            <li class="list-inline-item" id="timer-seconds">00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <br><br>
+            <div class="row justify-content-md-center" style="text-align: center;">
+                <div class="col text-center">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary btn-lg" type="button"
+                            style="height: 100%; width: 120px; margin: 10px 30px 10px 30px;" id="start"
+                            onclick="startTimer()">Start</button>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-lg" type="button"
+                            style="height: 100%; width: 120px; margin: 10px 30px 10px 30px;" id="resume"
+                            onclick="resumeTimer()" disabled="disabled">Resume</button>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-lg" type="button"
+                            style="height: 100%; width: 120px; margin: 10px 30px 10px 30px;" id="stop"
+                            onclick="stopTimer()" disabled="disabled">Stop</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" style="height: 30px;">
+                <!-- <p id="demo">here</p> -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
