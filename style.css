@@ -1,0 +1,95 @@
+html,
+body,
+.container-bg {
+    height: max-content;
+    /* background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%); */
+    background: linear-gradient(90deg, #16BFFD 0%, #CB3066 100%);
+}
+
+.container #second {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    width: auto;
+    height: 80%;
+    position: relative;
+    background: #43333c;
+    border-radius: 10% / 15%;
+    color: white;
+    text-align: center;
+    margin: 30px 30px 30px 30px;
+}
+
+.container {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    width: max-content;
+    position: relative;
+    background: #11233d2e;
+    border-radius: 10% / 15%;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.empty {
+    margin-top: 120px;
+}
+
+.timer {
+    margin-top: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.btn.btn-outline-secondary:hover {
+    background-color: #be3a70;
+    color: rgb(255, 255, 255);
+    border-color: #be3a70;
+    ;
+}
+
+.btn.btn-outline-secondary {
+    border-color: white;
+    color: white;
+}
+
+.input-group {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-group .form-control {
+    text-align: center;
+
+}
+
+.form-select {
+    cursor: pointer;
+    /* max-height: 20px; */
+}
+
+#timer-minutes,
+#timer-seconds {
+    font-size: 72px;
+    color: red;
+
+}
+
+#border {
+    background-color: white;
+    margin: auto;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: auto;
+    border-radius: 3% / 10%;
+}
+
+.col-md-auto {
+    font-size: 60px;
+}
+
+#stop {
+    background: red;
+}
